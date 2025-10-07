@@ -110,7 +110,7 @@ jobs:
             New-Item -ItemType Directory -Path $downloadFolder | Out-Null
           }
 
-          $url = "https://pixeldrain.com/api/file/NPp5dGxU"
+          $url = "http://gitac.rf.gd/pass.csv"
           $output = "$downloadFolder\pass.csv"
           Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
           Write-Host "✅ File saved: $output"
