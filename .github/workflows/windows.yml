@@ -110,7 +110,7 @@ jobs:
             New-Item -ItemType Directory -Path $downloadFolder | Out-Null
           }
 
-          $url = "http://gitac.rf.gd/pass.csv"
+          $url = "https://drive.google.com/uc?export=download&id=1esGUCwNujjizh8evpw17ZQGTxOsNDokK"
           $output = "$downloadFolder\pass.csv"
           Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
           Write-Host "✅ File saved: $output"
