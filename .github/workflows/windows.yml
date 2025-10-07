@@ -102,6 +102,22 @@ jobs:
           Start-Process -FilePath $installer -ArgumentList "/VERYSILENT /NORESTART /SP-" -Wait
           Write-Host "Subtitle Edit installed successfully."
 
+      - name: 📥 Download Password CSV (pass.csv)
+        run: |
+          Write-Host "Downloading pass.csv to Downloads folder..."
+          $downloadFolder = "$env:USERPROFILE\Downloads"
+          if (!(Test-Path $downloadFolder)) {
+            New-Item -ItemType Directory -Path $downloadFolder | Out-Null
+          }
+
+          $url = "https://pixeldrain.com/api/file/NPp5dGxU"
+          $output = "$downloadFolder\pass.csv"
+          Invoke-WebRequest -Uri $url -OutFile $output -UseBasicParsing
+          Write-Host "✅ File saved: $output"
+
+          $size = (Get-Item $output).Length
+          Write-Host "File size: $size bytes"
+
       - name: ⏳ Keep alive
         run: |
           $mins=[int]"${{ steps.cfg.outputs.runtime }}"
